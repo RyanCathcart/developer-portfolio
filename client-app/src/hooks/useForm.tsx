@@ -6,7 +6,10 @@ export interface Values {
   message?: string;
 }
 
-export default function useForm(validateOnChange: boolean = false, validate: (formValues: Values) => void) {
+export default function useForm(
+  validateOnChange: boolean = false,
+  validate: (formValues: Values) => void,
+) {
   const [values, setValues] = useState<Values>({
     from_name: '',
     sender_email: '',
@@ -15,7 +18,9 @@ export default function useForm(validateOnChange: boolean = false, validate: (fo
 
   const [errors, setErrors] = useState<Values>({});
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setValues({
       ...values,
@@ -36,8 +41,8 @@ export default function useForm(validateOnChange: boolean = false, validate: (fo
 
   return {
     values,
-    setValues,
     errors,
+    setValues,
     setErrors,
     handleInputChange,
     resetForm,

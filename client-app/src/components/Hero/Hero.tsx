@@ -47,16 +47,8 @@ export default function Hero() {
             display='inline-block'
             align='center'
           >
-            Hi, I'm&nbsp;
-            <Typography
-              color='secondary.main'
-              variant='h1'
-              display='inline'
-              align='center'
-            >
-              Ryan Cathcart
-            </Typography>
-            ,<br />a full-stack web developer.
+            Hi, I'm Ryan Cathcart,
+            <br />a full-stack web developer.
           </Typography>
         </Box>
 

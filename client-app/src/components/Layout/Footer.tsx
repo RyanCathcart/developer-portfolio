@@ -2,7 +2,7 @@ import { Box, IconButton, Typography } from '@mui/material';
 import { customTheme } from '../../styles/customTheme';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { handleClick } from '../../util/handleClick';
+import { handleClick } from '../../util/util';
 
 export default function Footer() {
   return (

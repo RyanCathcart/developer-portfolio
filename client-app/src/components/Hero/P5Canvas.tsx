@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { P5CanvasInstance, ReactP5Wrapper } from 'react-p5-wrapper';
+import { type P5CanvasInstance, ReactP5Wrapper } from 'react-p5-wrapper';
 import { customTheme } from '../../styles/customTheme';
 
 function sketch(p5: P5CanvasInstance) {
@@ -43,7 +43,7 @@ function sketch(p5: P5CanvasInstance) {
           0,
           1,
           -TERRAIN_AMPLITUDE,
-          TERRAIN_AMPLITUDE
+          TERRAIN_AMPLITUDE,
         );
         xOff += PERLIN_NOISE_OFFSET;
       }
