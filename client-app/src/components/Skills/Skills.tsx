@@ -52,9 +52,7 @@ export default function Skills() {
 
         <Grid container spacing={8}>
           <Grid
-            item
-            xs={12}
-            md={4}
+            size={{ xs: 12, md: 4 }}
             sx={{
               display: 'flex',
               flexDirection: 'column',
@@ -64,9 +62,7 @@ export default function Skills() {
             <SkillList title='Front End' content={frontendSkills} />
           </Grid>
           <Grid
-            item
-            xs={12}
-            md={4}
+            size={{ xs: 12, md: 4 }}
             sx={{
               display: 'flex',
               flexDirection: 'column',
@@ -76,9 +72,7 @@ export default function Skills() {
             <SkillList title='Back End' content={backendSkills} />
           </Grid>
           <Grid
-            item
-            xs={12}
-            md={4}
+            size={{ xs: 12, md: 4 }}
             sx={{
               display: 'flex',
               flexDirection: 'column',

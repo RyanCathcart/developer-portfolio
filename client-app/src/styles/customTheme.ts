@@ -1,4 +1,8 @@
-import { createTheme, PaletteColor, PaletteColorOptions } from '@mui/material';
+import {
+  createTheme,
+  type PaletteColor,
+  type PaletteColorOptions,
+} from '@mui/material';
 
 // Configuration for the custom theme being used for Material UI for React
 // The default theme object's properties that can be overidden are described at this link:
@@ -7,6 +11,15 @@ import { createTheme, PaletteColor, PaletteColorOptions } from '@mui/material';
 const breakpoints = createTheme().breakpoints; // Takes the breakpoints from the default theme
 
 export const customTheme = createTheme({
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          background: 'hsl(214, 30%, 9%)',
+        },
+      },
+    },
+  },
   palette: {
     mode: 'dark',
     primary: {
@@ -55,10 +68,6 @@ export const customTheme = createTheme({
 });
 
 declare module '@mui/material/styles' {
-  interface Theme {}
-
-  interface ThemeOptions {}
-
   interface Palette {
     deepBackground?: PaletteColor;
   }

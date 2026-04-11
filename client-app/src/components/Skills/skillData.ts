@@ -3,11 +3,10 @@ import cssIcon from '../../assets/skills/css.png';
 import dockerIcon from '../../assets/skills/docker.png';
 import dotNetIcon from '../../assets/skills/dotnet.png';
 import htmlIcon from '../../assets/skills/html.png';
-import jsIcon from '../../assets/skills/javascript.png';
-import tsIcon from '../../assets/skills/typescript.png';
+import jsTsIcon from '../../assets/skills/js-ts.png';
 import reactIcon from '../../assets/skills/react.png';
 import muiIcon from '../../assets/skills/materialui.png';
-import suiIcon from '../../assets/skills/semanticui.png';
+import mauiIcon from '../../assets/skills/dotnet-maui.png';
 import javaIcon from '../../assets/skills/java.png';
 import jfxIcon from '../../assets/skills/javafx.png';
 import pythonIcon from '../../assets/skills/python.png';
@@ -22,15 +21,9 @@ export type Skill = {
 
 export const frontendSkills: Skill[] = [
   {
-    image: jsIcon,
-    imageAltText: 'JavaScript',
-    text: 'JavaScript',
-    yearLearned: 2021,
-  },
-  {
-    image: tsIcon,
-    imageAltText: 'TypeScript',
-    text: 'TypeScript',
+    image: jsTsIcon,
+    imageAltText: 'JavaScript / TypeScript',
+    text: 'JavaScript / TypeScript',
     yearLearned: 2021,
   },
   { image: reactIcon, imageAltText: 'React', text: 'React', yearLearned: 2021 },
@@ -41,10 +34,10 @@ export const frontendSkills: Skill[] = [
     yearLearned: 2021,
   },
   {
-    image: suiIcon,
-    imageAltText: 'Semantic UI',
-    text: 'Semantic UI',
-    yearLearned: 2021,
+    image: mauiIcon,
+    imageAltText: '.NET MAUI',
+    text: '.NET MAUI',
+    yearLearned: 2024,
   },
   { image: jfxIcon, imageAltText: 'JavaFX', text: 'JavaFX', yearLearned: 2016 },
 ];

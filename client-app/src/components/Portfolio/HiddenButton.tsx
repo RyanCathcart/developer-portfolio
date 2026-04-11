@@ -1,17 +1,20 @@
 import { Button } from '@mui/material';
-import { ReactNode } from 'react';
-import { handleClick } from '../../util/handleClick';
+import type { ReactNode } from 'react';
+import { handleClick } from '../../util/util';
 
-interface HiddenButtonProps {
+interface Props {
   children?: string;
   icon?: ReactNode;
   link: string;
   transition: string;
 }
 
-export default function HiddenButton(props: HiddenButtonProps) {
-  const { children, icon, link, transition } = props;
-
+export default function HiddenButton({
+  children,
+  icon,
+  link,
+  transition,
+}: Props) {
   return (
     <Button
       className='hidden-button'

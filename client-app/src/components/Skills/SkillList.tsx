@@ -1,14 +1,14 @@
 import { Box, Typography, Grid } from '@mui/material';
 import { customTheme } from '../../styles/customTheme';
 import SkillItem from './SkillItem';
-import { Skill } from './skillData';
+import { type Skill } from './skillData';
 
-interface SkillListProps {
+interface Props {
   title: string;
   content: Skill[];
 }
 
-export default function SkillList(props: SkillListProps) {
+export default function SkillList(props: Props) {
   const { title, content } = props;
 
   return (
@@ -33,7 +33,7 @@ export default function SkillList(props: SkillListProps) {
       </Typography>
       <Grid container>
         {content.map((skill) => (
-          <Grid item xs={6} md={12} key={skill.text}>
+          <Grid size={{ xs: 6, md: 12 }} key={skill.text}>
             <SkillItem
               image={skill.image}
               imageAltText={skill.imageAltText}

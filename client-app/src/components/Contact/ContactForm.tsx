@@ -1,27 +1,31 @@
 import { Box, Button, Container, TextField } from '@mui/material';
 import emailjs from '@emailjs/browser';
-import useForm, { Values } from '../../hooks/useForm';
+import useForm, { type Values } from '../../hooks/useForm';
 import { useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 
 export default function ContactForm() {
   const [emailSent, setEmailSent] = useState(false);
+  const { values, errors, setErrors, handleInputChange, resetForm } = useForm(
+    true,
+    validate,
+  );
   const serviceID = 'service_yqo5rw5';
   const templateID = 'template_loaeo0l';
   const userID = 'dFpCPYdaMXPW8Jcu7';
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = (e: React.SubmitEvent<HTMLFormElement>) => {
     emailjs.sendForm(serviceID, templateID, e.currentTarget, userID).then(
       (result) => {
         console.log(result.text);
       },
       (error) => {
         console.log(error.text);
-      }
+      },
     );
   };
 
-  const validate = (fieldValues: Values) => {
+  function validate(fieldValues: Values) {
     const temp: Values = { ...errors };
     if ('from_name' in fieldValues) {
       temp.from_name = fieldValues.from_name ? '' : 'This field is required';
@@ -39,14 +43,9 @@ export default function ContactForm() {
     if (fieldValues === values) {
       return Object.values(temp).every((x) => x === '');
     }
-  };
+  }
 
-  const { values, errors, setErrors, handleInputChange, resetForm } = useForm(
-    true,
-    validate
-  );
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validate(values)) {
       setEmailSent(true);

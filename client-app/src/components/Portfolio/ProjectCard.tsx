@@ -10,23 +10,23 @@ import HiddenButton from './HiddenButton';
 import LinkIcon from '@mui/icons-material/Link';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-interface ProjectCardProps {
+interface Props {
   title: string;
   description: string;
   image?: string;
   imageAltText?: string;
-  demoLink: string;
+  demoLink?: string;
   repoLink: string;
 }
 
-export default function ProjectCard(props: ProjectCardProps) {
+export default function ProjectCard(props: Props) {
   const { title, description, image, imageAltText, demoLink, repoLink } = props;
 
   const cardMediaHeight = '15rem';
   const transition = '0.4s ease';
 
   return (
-    <Grid item xs={12} md={6}>
+    <Grid size={{ xs: 12, md: 6 }}>
       <Card
         raised
         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
@@ -71,13 +71,15 @@ export default function ProjectCard(props: ProjectCardProps) {
                   transition: transition,
                 }}
               />
-              <HiddenButton
-                icon={<LinkIcon />}
-                link={demoLink}
-                transition={transition}
-              >
-                View Demo
-              </HiddenButton>
+              {demoLink && (
+                <HiddenButton
+                  icon={<LinkIcon />}
+                  link={demoLink}
+                  transition={transition}
+                >
+                  View Demo
+                </HiddenButton>
+              )}
               <HiddenButton
                 icon={<GitHubIcon />}
                 link={repoLink}

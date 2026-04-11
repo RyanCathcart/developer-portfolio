@@ -1,4 +1,13 @@
-import { Box, Fab, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
+import {
+  Fab,
+  Grow,
+  Paper,
+  Popper,
+  MenuItem,
+  MenuList,
+  ClickAwayListener,
+  ListItemIcon,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
@@ -8,15 +17,15 @@ import EmailIcon from '@mui/icons-material/Email';
 import { useState } from 'react';
 import { Link } from 'react-scroll';
 
-export default function FloatingNav() {
-  const pages = [
-    { name: 'Home', icon: HomeIcon },
-    { name: 'About', icon: PersonIcon },
-    { name: 'Skills', icon: InsightsIcon },
-    { name: 'Portfolio', icon: PermMediaIcon },
-    { name: 'Contact', icon: EmailIcon },
-  ];
+const pages = [
+  { name: 'Home', icon: HomeIcon },
+  { name: 'About', icon: PersonIcon },
+  { name: 'Skills', icon: InsightsIcon },
+  { name: 'Portfolio', icon: PermMediaIcon },
+  { name: 'Contact', icon: EmailIcon },
+];
 
+export default function FloatingNav() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -29,63 +38,64 @@ export default function FloatingNav() {
   };
 
   return (
-    <Box
-      component='div'
-      className='FloatingNav'
-      sx={{
-        position: 'fixed',
-        top: '8%',
-        width: '100vw',
-        display: 'flex',
-        flexDirection: 'row-reverse',
-        zIndex: 1000,
-      }}
-    >
-      <Tooltip title='Menu'>
-        <Fab
-          onClick={handleClick}
-          color='secondary'
-          size='large'
-          aria-controls={open ? 'menu' : undefined}
-          aria-haspopup='true'
-          aria-expanded={open ? 'true' : undefined}
-          sx={{
-            right: '5%',
-            display: 'flex',
-            boxShadow: '0 0 10px rgb(0, 180, 216), 0 0 15px rgb(0, 180, 216)',
-          }}
-        >
-          <MenuIcon />
-        </Fab>
-      </Tooltip>
-      <Menu
-        anchorEl={anchorEl}
-        id='menu'
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.32))',
-            mt: 1.5,
-          },
+    <>
+      <Fab
+        id='button'
+        aria-controls={open ? 'menu' : undefined}
+        aria-expanded={open ? 'true' : undefined}
+        aria-haspopup='true'
+        onClick={handleClick}
+        color='secondary'
+        sx={{
+          position: 'fixed',
+          top: '10%',
+          right: '5%',
+          zIndex: 1000,
+          boxShadow: '0 0 10px rgb(0, 180, 216), 0 0 15px rgb(0, 180, 216)',
         }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        {pages.map((page) => (
-          <Link key={page.name} to={page.name} smooth={true} onClick={handleClose}>
-            <MenuItem sx={{ p: 1.5 } }>
-              <ListItemIcon>
-                <page.icon />
-              </ListItemIcon>
-              {page.name}
-            </MenuItem>
-          </Link>
-        ))}
-      </Menu>
-    </Box>
+        <MenuIcon />
+      </Fab>
+      <Popper
+        open={open}
+        anchorEl={anchorEl}
+        role={undefined}
+        placement='top-end'
+        transition
+        disablePortal
+        sx={{ zIndex: 1000 }}
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === 'bottom-start' ? 'right top' : 'right bottom',
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  autoFocusItem={open}
+                  id='menu'
+                  aria-labelledby='button'
+                >
+                  {pages.map((page) => (
+                    <Link key={page.name} to={page.name} smooth={true}>
+                      <MenuItem onClick={handleClose} sx={{ p: 1.5 }}>
+                        <ListItemIcon>
+                          <page.icon />
+                        </ListItemIcon>
+                        {page.name}
+                      </MenuItem>
+                    </Link>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </>
   );
 }
