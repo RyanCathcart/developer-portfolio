@@ -31,25 +31,54 @@ export default function Hero() {
       sx={{
         position: 'relative',
         width: 'auto',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        display: 'grid',
+        placeItems: 'center',
         textAlign: 'center',
         boxShadow: `0 -10vh 5vh -5vh ${customTheme.palette.deepBackground?.main} inset `,
       }}
     >
       <P5Canvas />
-      <Box sx={{ animation: `${fadeIn} 5s` }}>
+      <Box flexDirection='column' sx={{ animation: `${fadeIn} 5s` }}>
         <Box>
-          <Typography
+          <Box>
+            <Typography color='white' variant='h1' display='inline-block'>
+              Hi, I'm&nbsp;
+            </Typography>
+            <Typography color='secondary' variant='h1' display='inline-block'>
+              Ryan Cathcart
+            </Typography>
+            <Typography color='white' variant='h1' display='inline-block'>
+              ,
+            </Typography>
+          </Box>
+          <Box
+            display='flex'
             color='white'
-            variant='h1'
-            display='inline-block'
-            align='center'
+            fontWeight='bold'
+            textAlign='center'
+            height='5rem'
           >
-            Hi, I'm Ryan Cathcart,
-            <br />a full-stack web developer.
-          </Typography>
+            <Box overflow='hidden' position='relative'>
+              <Typography variant='h1' className='role'>
+                a full-stack web developer.
+              </Typography>
+              <Typography variant='h1' className='role'>
+                a software engineer.
+              </Typography>
+              <Typography variant='h1' className='role'>
+                a native app developer.
+              </Typography>
+              <Typography variant='h1' className='role'>
+                an open source contributor.
+              </Typography>
+              <Typography variant='h1' className='role'>
+                a problem solver.
+              </Typography>
+              <Typography variant='h1' className='role'>
+                a full-stack web developer.
+              </Typography>
+            </Box>
+          </Box>
         </Box>
 
         <Link to='About' smooth={true}>

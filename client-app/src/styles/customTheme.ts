@@ -11,6 +11,15 @@ import {
 const breakpoints = createTheme().breakpoints; // Takes the breakpoints from the default theme
 
 export const customTheme = createTheme({
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          background: 'hsl(214, 30%, 9%)',
+        },
+      },
+    },
+  },
   palette: {
     mode: 'dark',
     primary: {

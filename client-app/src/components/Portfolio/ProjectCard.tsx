@@ -15,7 +15,7 @@ interface Props {
   description: string;
   image?: string;
   imageAltText?: string;
-  demoLink: string;
+  demoLink?: string;
   repoLink: string;
 }
 
@@ -71,13 +71,15 @@ export default function ProjectCard(props: Props) {
                   transition: transition,
                 }}
               />
-              <HiddenButton
-                icon={<LinkIcon />}
-                link={demoLink}
-                transition={transition}
-              >
-                View Demo
-              </HiddenButton>
+              {demoLink && (
+                <HiddenButton
+                  icon={<LinkIcon />}
+                  link={demoLink}
+                  transition={transition}
+                >
+                  View Demo
+                </HiddenButton>
+              )}
               <HiddenButton
                 icon={<GitHubIcon />}
                 link={repoLink}
