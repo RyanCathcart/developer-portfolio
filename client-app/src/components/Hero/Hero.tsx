@@ -24,6 +24,39 @@ export default function Hero() {
     };
   }, []);
 
+  const roleChange = keyframes`
+    5% {
+        transform: translateY(-102%);
+    }
+    20% {
+        transform: translateY(-100%);
+    }
+    25% {
+        transform: translateY(-202%);
+    }
+    40% {
+        transform: translateY(-200%);
+    }
+    45% {
+        transform: translateY(-302%);
+    }
+    60% {
+        transform: translateY(-300%);
+    }
+    65% {
+        transform: translateY(-402%);
+    }
+    80% {
+        transform: translateY(-400%);
+    }
+    85% {
+        transform: translateY(-502%);
+    }
+    100% {
+        transform: translateY(-500%);
+    }
+`;
+
   return (
     <Box
       className='Hero Home'
@@ -56,25 +89,68 @@ export default function Hero() {
             color='white'
             fontWeight='bold'
             textAlign='center'
-            height='5rem'
+            height={{ xs: '1.8rem', sm: '2.5rem', md: '4.5rem' }}
+            mt={{ xs: 0.6, sm: 1, md: 1.5 }}
           >
             <Box overflow='hidden' position='relative'>
-              <Typography variant='h1' className='role'>
+              <Typography
+                variant='h1'
+                sx={{
+                  display: 'block',
+                  height: '100%',
+                  animation: `${roleChange} 20s infinite`,
+                }}
+              >
                 a full-stack web developer.
               </Typography>
-              <Typography variant='h1' className='role'>
+              <Typography
+                variant='h1'
+                sx={{
+                  display: 'block',
+                  height: '100%',
+                  animation: `${roleChange} 20s infinite`,
+                }}
+              >
                 a software engineer.
               </Typography>
-              <Typography variant='h1' className='role'>
+              <Typography
+                variant='h1'
+                sx={{
+                  display: 'block',
+                  height: '100%',
+                  animation: `${roleChange} 20s infinite`,
+                }}
+              >
                 a native app developer.
               </Typography>
-              <Typography variant='h1' className='role'>
+              <Typography
+                variant='h1'
+                sx={{
+                  display: 'block',
+                  height: '100%',
+                  animation: `${roleChange} 20s infinite`,
+                }}
+              >
                 an open source contributor.
               </Typography>
-              <Typography variant='h1' className='role'>
+              <Typography
+                variant='h1'
+                sx={{
+                  display: 'block',
+                  height: '100%',
+                  animation: `${roleChange} 20s infinite`,
+                }}
+              >
                 a problem solver.
               </Typography>
-              <Typography variant='h1' className='role'>
+              <Typography
+                variant='h1'
+                sx={{
+                  display: 'block',
+                  height: '100%',
+                  animation: `${roleChange} 20s infinite`,
+                }}
+              >
                 a full-stack web developer.
               </Typography>
             </Box>
@@ -87,7 +163,7 @@ export default function Hero() {
             size='large'
             color='secondary'
             endIcon={<ArrowDownwardRoundedIcon />}
-            sx={{ mt: 4, py: 1.5 }}
+            sx={{ mt: { xs: 3, sm: 4, md: 5 }, py: 1.5 }}
           >
             View my work&nbsp;
           </Button>
